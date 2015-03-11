@@ -27,14 +27,15 @@
 
 	<br />
 <!-- attributes available: isotope-layout-mode="fitRows" isotope-item-selector="div" -->
-	<div isotope-grid="elementsList" isotope-reload-event="reload-elements" isotope-sort-event="sort-lrj"
+	<ul class="container posts" isotope-grid="elementsList" isotope-reload-event="reload-elements" isotope-sort-event="sort-lrj"
 	 isotope-filter-event="filter-lrj"
 	 isotope-sort-data="{ name: '.name','date': '.date parseInt', 'upvote': '.upvote parseInt', 'category': '[data-category]'}">
-
-		<div class="element-item {{element.filter}}" data-category="{{element.category}}" ng-repeat="element in dashboard.posts">
-			<h3 class="name">{{element.name}}</h3>
-			<p class="date">{{element.date}}</p>
-			<p class="upvote">{{element.upvote}}</p>
-		</div>
-	</div>
+		<li class="row col-xs-12">
+			<div class="post-item {{post.filter}} col-md-4" data-category="{{post.category}}" ng-repeat="post in dashboard.posts">
+				<p class="name">{{post.name}}</p>
+				<p class="date">{{post.date}}</p>
+				<p class="upvote">{{post.upvote}}</p>
+			</div>
+		</li>
+	</li>
 </section>

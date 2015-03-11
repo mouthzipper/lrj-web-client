@@ -27,7 +27,7 @@ var port   = process.env.PORT || config.defaultPort;
  * List the available gulp tasks
  */
 gulp.task( 'help', $.taskListing );
-gulp.task( 'default', ['help'] );
+gulp.task( 'default', [ 'serve-dev' ] );
 
 /**
  * vet the code and create coverage report
@@ -35,7 +35,6 @@ gulp.task( 'default', ['help'] );
  */
 gulp.task( 'vet', function() {
 	log('Analyzing source with JSHint and JSCS');
-
 	return gulp
 		.src(config.alljs)
 		.pipe($.if(args.verbose, $.print()))
@@ -51,7 +50,6 @@ gulp.task( 'vet', function() {
 gulp.task('plato', function(done) {
 	log('Analyzing source with Plato');
 	log('Browse to /report/plato/index.html to see Plato results');
-
 	startPlatoVisualizer(done);
 });
 
@@ -66,7 +64,7 @@ gulp.task('styles', ['clean-styles'], function() {
 		.src(config.less)
 		.pipe($.plumber()) // exit gracefully if something fails after this
 		.pipe($.less())
-//        .on('error', errorLogger) // more verbose and dupe output. requires emit.
+		.on('error', errorLogger) // more verbose and dupe output. requires emit.
 		.pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
 		.pipe(gulp.dest(config.temp));
 });
