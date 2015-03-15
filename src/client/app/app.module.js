@@ -3,8 +3,10 @@
 
 	angular.module('app', [
 		'app.core',
+		'app.login',
 		'app.dashboard',
 		'app.layout'
+
 	]);
 
 })();

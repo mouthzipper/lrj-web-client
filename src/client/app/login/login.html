@@ -1,0 +1,46 @@
+<div class="container">
+	<div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		<div class="panel panel-info" >
+			<div class="panel-heading">
+				<div class="panel-title">Sign In</div>
+				<div id="forgot-password"><a href="#">Forgot password?</a></div>
+			</div>
+			<div id="login-body" class="panel-body" >
+				<div id="login-alert" class="alert alert-danger col-sm-12"></div>
+				<form id="loginform" class="form-horizontal" role="form">
+					<div id="username-holder" class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						<input id="login-username" ng-model="login.user.username" type="text" class="form-control" name="username" value="" placeholder="username">
+					</div>
+					<div id="password-holder" class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+						<input id="login-password" ng-model="login.user.password" type="password" class="form-control" name="password" placeholder="password">
+					</div>
+					<div class="input-group">
+						<div class="checkbox">
+							<label>
+								<input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+							</label>
+						</div>
+					</div>
+					<div id="login-button-holder" class="form-group">
+						<div class="col-sm-12 controls">
+							<a id="btn-login" class="btn btn-success" ng-click="login.login()">Login  </a>
+							<a id="btn-fblogin" ui-sref="facebookLogin()" class="btn btn-primary">Login with Facebook</a>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12 control">
+							<div id="no-account" >
+								Don't have an account!
+								<a ui-sref="signup()">
+									Sign Up Here
+								</a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

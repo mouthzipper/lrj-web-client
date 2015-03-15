@@ -6,7 +6,7 @@
 			{
 				state: 'dashboard',
 				config: {
-					url: '/',
+					url: '/dashboard',
 					templateUrl: 'app/dashboard/dashboard.html',
 					controller: 'DashboardController',
 					controllerAs: 'dashboard',
