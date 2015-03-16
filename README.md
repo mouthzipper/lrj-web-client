@@ -28,6 +28,8 @@
  - Run the project with `gulp serve-dev --sync`
 
  - `--sync` opens it in a browser and updates the browser with any files changes.
+### Running in spec mode
+ - Run the project with `gulp serve-specs`
 
 ### Building the project
  - Build the optimized project using `gulp build`
