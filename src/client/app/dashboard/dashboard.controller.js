@@ -2,7 +2,7 @@
 	'use strict';
 
 	/* @ngInject */
-	function DashboardController( $q, dataservice, logger ) {
+	function DashboardController( $q, PostService, logger ) {
 		var self = this;
 
 		self.posts = [];
@@ -18,7 +18,7 @@
 		}
 
 		function getPosts() {
-			return dataservice.getPosts().then( function ( data ) {
+			return PostService.getPosts().then( function ( data ) {
 				self.posts = data;
 				return self.posts;
 			} );

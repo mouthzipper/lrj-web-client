@@ -2,14 +2,14 @@
 	'use strict';
 
 	/* @ngInject */
-	function LoginController( $q, dataservice, logger, store, $state) {
+	function LoginController( $q, UserService, logger, store, $state) {
 		var self   = this;
 		self.user  = {};
 		self.title = 'Login';
 		self.login = login;
 
 		function login() {
-			dataservice.loginUser( self.user )
+			UserService.loginUser( self.user )
 				.then( function( data ) {
 					store.set( 'jwt', data );
 					$state.go('dashboard');

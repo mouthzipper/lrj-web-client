@@ -2,7 +2,7 @@
 	'use strict';
 
 	/* @ngInject */
-	function SignupController( $q, dataservice, logger, store, $state) {
+	function SignupController( $q, UserService, logger, store, $state) {
 		var self   = this;
 		self.user  = {};
 		self.title = 'Signup';

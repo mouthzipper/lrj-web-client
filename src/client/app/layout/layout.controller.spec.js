@@ -4,7 +4,7 @@ describe( 'LayoutController', function () {
 
 	beforeEach( function() {
 		bard.appModule( 'app.layout' );
-		bard.inject( '$controller', '$q', '$rootScope', '$timeout', 'dataservice' );
+		bard.inject( '$controller', '$q', '$rootScope', '$timeout' );
 	});
 
 	beforeEach(function () {

@@ -3,6 +3,7 @@
 
 	angular.module( 'app.dashboard', [
 		'app.core',
+		'app.data',
 		'ng-isotope'
 	]);
 })();
