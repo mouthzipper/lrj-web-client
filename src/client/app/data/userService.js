@@ -2,26 +2,38 @@
 	'use strict';
 
 	/* @ngInject */
-	function UserService( $http, $q, logger ) {
+	function UserService( $http, $q, logger, API_URL, AuthTokenFactory ) {
+
 		var service = {
-			loginUser : loginUser
+			login   : login,
+			logout  : logout,
+			getUser : getUser
 		};
 
 		return service;
 
-		function loginUser( user ) {
-			return $http.post( 'http://localhost:3000/users/login', user )
-				.then(success)
-				.catch(fail);
+		function login( user ) {
+			return $http.post( API_URL +'/users/login', user )
+				.then( function ( response ) {
+					AuthTokenFactory.setToken( response.data );
+					return response.data;
+				} )
+				.catch( function ( error ) {
+					var msg = 'Login Failed';
+					logger.error( msg) ;
+					return $q.reject(msg);
+				} );
+		}
 
-			function success( response ) {
-				return response.data;
-			}
+		function logout() {
+			AuthTokenFactory.setToken();
+		}
 
-			function fail( error ) {
-				var msg = 'Login Failed';
-				logger.error( msg) ;
-				return $q.reject(msg);
+		function getUser() {
+			if ( AuthTokenFactory.getToken()) {
+				return $http.get( API_URL + '/me' );
+			} else {
+				return $q.reject({ data: 'client has no auth token' });
 			}
 		}
 	}

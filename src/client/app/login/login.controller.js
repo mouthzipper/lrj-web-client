@@ -3,19 +3,24 @@
 
 	/* @ngInject */
 	function LoginController( $q, UserService, logger, store, $state) {
-		var self   = this;
-		self.user  = {};
-		self.title = 'Login';
-		self.login = login;
+		var self    = this;
+		self.user   = {};
+		self.title  = 'Login';
+		self.login  = login;
+		self.logout = logout;
 
 		function login() {
-			UserService.loginUser( self.user )
+			UserService.login( self.user )
 				.then( function( data ) {
-					store.set( 'jwt', data );
 					$state.go('dashboard');
 				} );
 		}
 		logger.info( 'Activated' );
+
+		function logout() {
+			UserService.logout();
+			self.user = null;
+		}
 	}
 
 
