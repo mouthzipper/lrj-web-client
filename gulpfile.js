@@ -29,6 +29,12 @@ var port   = process.env.PORT || config.defaultPort;
 gulp.task( 'help', $.taskListing );
 gulp.task( 'default', [ 'serve-dev' ] );
 
+// gulp.task("webpack", function() {
+// 	return gulp.src('app/modules/index.js')
+// 	.pipe( $.webpack( require('./webpack.config.js' ) ) )
+// 	.pipe(gulp.dest('dist/'));
+// });
+
 /**
  * vet the code and create coverage report
  * @return {Stream}

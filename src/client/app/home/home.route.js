@@ -4,13 +4,13 @@
 	function getStates() {
 		return [
 			{
-				state: 'dashboard',
+				state: 'home',
 				config: {
-					url: '/dashboard',
-					templateUrl: 'app/dashboard/dashboard.html',
-					controller: 'DashboardController',
-					controllerAs: 'dashboard',
-					title: 'dashboard'
+					url: '/',
+					templateUrl: 'app/home/home.html',
+					controller: 'HomeController',
+					controllerAs: 'home',
+					title: 'home'
 				}
 			}
 		];
@@ -19,9 +19,11 @@
 	/* @ngInject */
 	function appRun( routerHelper ) {
 		routerHelper.configureStates( getStates() );
+
 	}
 
 	angular
-		.module('app.dashboard')
+		.module('app.home')
 		.run( appRun );
+
 })();

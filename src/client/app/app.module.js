@@ -4,11 +4,10 @@
 	angular.module('app', [
 		'app.core',
 		'app.data',
+		'app.layout',
 		'app.signup',
 		'app.login',
-		'app.dashboard',
-		'app.layout'
-
+		'app.home',
 	]);
 
 })();

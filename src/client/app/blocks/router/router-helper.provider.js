@@ -3,13 +3,13 @@
 	'use strict';
 
 	/* @ngInject */
-	function routerHelperProvider( $locationProvider, $stateProvider, $urlRouterProvider ) {
+	function routerHelperProvider( $locationProvider, $stateProvider, $urlRouterProvider, $authProvider, API_URL ) {
 		/* jshint validthis:true */
 		var config = {
 			docTitle: undefined,
 			resolveAlways: {}
 		};
-
+		$authProvider.loginUrl = API_URL +'/auth/login';
 		$locationProvider.html5Mode(true);
 
 		this.configure = function(cfg) {
@@ -39,7 +39,7 @@
 
 			///////////////
 
-			function configureStates(states, otherwisePath) {
+			function configureStates( states, otherwisePath ) {
 				states.forEach(function(state) {
 					state.config.resolve =
 						angular.extend(state.config.resolve || {}, config.resolveAlways);

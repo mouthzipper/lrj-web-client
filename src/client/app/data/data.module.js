@@ -2,6 +2,5 @@
 	'use strict';
 
 	angular
-		.module( 'app.data', [ 'app.core' ] )
-		.constant('API_URL', 'http://localhost:3000');
+		.module( 'app.data', [ 'app.core' ] );
 })();

@@ -2,9 +2,12 @@
 	'use strict';
 
 	/* @ngInject */
-	function appRun( routerHelper ) {
+	function appRun( routerHelper, $rootScope, $window, $auth ) {
 		var otherwise = '/404';
 		routerHelper.configureStates(getStates(), otherwise);
+		if ($auth.isAuthenticated()) {
+			$rootScope.currentUser = JSON.parse( $window.localStorage.currentUser );
+		}
 	}
 
 	function getStates() {
