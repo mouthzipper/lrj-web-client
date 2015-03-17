@@ -17,13 +17,11 @@
 	}
 
 	/* @ngInject */
-	function appRun(routerHelper) {
-		routerHelper.configureStates(getStates());
+	function appRun( routerHelper ) {
+		routerHelper.configureStates( getStates() );
 	}
 
 	angular
 		.module('app.dashboard')
-		.run(appRun);
-
-	appRun.$inject = ['routerHelper'];
+		.run( appRun );
 })();

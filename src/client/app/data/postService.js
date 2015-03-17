@@ -2,7 +2,7 @@
 	'use strict';
 
 	/* @ngInject */
-	function PostService( $http, $q, logger ) {
+	function PostService( $http, $q, logger, AuthTokenFactory, $state ) {
 		var service = {
 			getPosts  : getPosts
 		};
@@ -10,19 +10,22 @@
 		return service;
 
 		function getPosts() {
-			return $http.get( '/api/posts' )
-				.then(success)
-				.catch(fail);
+			if ( AuthTokenFactory.getToken() ) {
+				return $http.get( '/api/posts' )
+				.then( function ( response ) {
+					return response.data;
+				})
+				.catch( errorHandler );
 
-			function success( response ) {
-				return response.data;
+			} else {
+				$state.go( 'login' );
 			}
+		}
 
-			function fail( error ) {
-				var msg = 'query for posts failed. ' + error.data.description;
-				logger.error( msg) ;
-				return $q.reject(msg);
-			}
+		function errorHandler( error ) {
+			var msg = 'query for posts failed. ' + error.data.description;
+			logger.error( msg) ;
+			return $q.reject(msg);
 		}
 	}
 

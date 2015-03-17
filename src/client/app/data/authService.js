@@ -39,9 +39,9 @@
 			return config;
 		}
 	}
-
 	angular
 		.module( 'app.data' )
 		.factory( 'AuthTokenFactory', AuthTokenFactory)
-		.factory( 'AuthInterceptor', AuthInterceptor );
+		.factory( 'AuthInterceptor', AuthInterceptor )
+		.factory( 'IsAuthenticated', IsAuthenticated );
 })();

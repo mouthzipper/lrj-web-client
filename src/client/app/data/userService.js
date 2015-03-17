@@ -2,7 +2,7 @@
 	'use strict';
 
 	/* @ngInject */
-	function UserService( $http, $q, logger, API_URL, AuthTokenFactory ) {
+	function UserService( $http, $q, logger, API_URL, AuthTokenFactory, $state ) {
 
 		var service = {
 			login   : login,
@@ -27,6 +27,7 @@
 
 		function logout() {
 			AuthTokenFactory.setToken();
+			$state.go( 'login' );
 		}
 
 		function getUser() {

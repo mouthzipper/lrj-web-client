@@ -2,26 +2,23 @@
 	'use strict';
 
 	/* @ngInject */
-	function DashboardController( $q, PostService, logger ) {
+	function DashboardController( $q, PostService, logger, UserService  ) {
 		var self = this;
 
 		self.posts = [];
 		self.title  = 'Dashboard';
-
-		activate();
-
-		function activate() {
-			var promises = [ getPosts() ];
-			return $q.all( promises ).then( function () {
-				logger.info( 'Activated Dashboard View' );
-			} );
-		}
-
-		function getPosts() {
-			return PostService.getPosts().then( function ( data ) {
+		self.logout = logout;
+		loadData();
+		function loadData () {
+			PostService.getPosts().then( function ( data ) {
 				self.posts = data;
 				return self.posts;
 			} );
+		}
+
+
+		function logout() {
+			UserService.logout();
 		}
 	}
 
