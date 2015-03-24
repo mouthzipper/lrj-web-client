@@ -3,17 +3,17 @@
 		<ul class="nav navbar-nav">
 			<a ui-sref="home" class="navbar-brand"><i class=""></i> #lrj</a>
 			<li><a ui-sref="home">Home</a></li>
-			<li ng-if="!layout.isAuthenticated()"><a ui-sref="login">Log in</a></li>
-			<li ng-if="!layout.isAuthenticated()"><a ui-sref="signup">Sign up</a></li>
 		</ul>
 		<ul class="nav navbar-nav pull-right">
+			<li ng-if="!layout.isAuthenticated()"><a ui-sref="signup">Sign up</a></li>
+			<li ng-if="!layout.isAuthenticated()"><a ui-sref="login">Log in</a></li>
 			<li ng-if="layout.isAuthenticated() && currentUser.username">
 				<a href="#">
-				<img class="media-object img-rounded" ng-src="{{currentUser.picture}}">
+				<img class="media-object img-rounded" ng-src="../../images/gulp-tiny.png" height="25" width="50">
 				@{{currentUser.username}}
 				</a>
 			</li>
-			<li ng-if="layout.isAuthenticated()"><a href="#" ng-click="layout.logout()">Logout</a></li>
+			<li ng-if="layout.isAuthenticated()"><a href="#" ng-click="layout.logout()"><i class="fa fa-power-off"></i></a></li>
 		</ul>
 	</div>
 </div>

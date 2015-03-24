@@ -8,7 +8,10 @@
 		self.posts           = [];
 		self.title           = 'Dashboard';
 		self.isAuthenticated = isAuthenticated;
-		loadData();
+
+		if ( $auth.isAuthenticated() && ( $rootScope.currentUser && $rootScope.currentUser.username ) ) {
+			loadData();
+		}
 		function isAuthenticated() {
 			return $auth.isAuthenticated();
 		}

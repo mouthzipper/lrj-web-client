@@ -1,10 +1,15 @@
 <div class="container">
 	<div ng-if="home.isAuthenticated() && currentUser.username">
 		<div class="row">
-			<div ng-repeat="post in home.posts" class="col-lg-2 col-sm-3 col-xs-4">
-				<a href="/posts/{{post.id}}">
-					<p>{{post.name}}</p>
-				</a>
+			<div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="post in home.posts" >
+				<div class="thumbnail">
+					<img src="http://placehold.it/500x300" alt="">
+					<div class="caption">
+						<h4>{{ post.name }}</h4>
+						<p>{{post.details}}</p>
+						<p><i class="fa fa-thumbs-up"></i> &nbsp; <i class="fa fa-thumbs-down"></i> </p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -22,9 +27,9 @@
 	<div ng-if="home.isAuthenticated() && !currentUser.username" class="center-form panel">
 		<div class="panel-body">
 			<h5 class="text-center"><i class="ion-link"></i> Link Account</h5>
-			<p>To complete the registration process you must link your Instagram account.</p>
+			<p>To complete the registration process you must verify your account.</p>
 			<button class="btn btn-block btn-instagram" ng-click="linkInstagram()">
-				<i class="ion-social-instagram"></i> Sign in with Instagram
+				<i class="fa fa-google"></i> Verify Account
 			</button>
 		</div>
 	</div>

@@ -9,7 +9,8 @@
 			docTitle: undefined,
 			resolveAlways: {}
 		};
-		$authProvider.loginUrl = API_URL +'/auth/login';
+		$authProvider.loginUrl  = API_URL +'/auth/login';
+		$authProvider.signupUrl =  API_URL + '/auth/signup';
 		$locationProvider.html5Mode(true);
 
 		this.configure = function(cfg) {
