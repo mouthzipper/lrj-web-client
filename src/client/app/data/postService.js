@@ -2,7 +2,7 @@
 	'use strict';
 
 	/* @ngInject */
-	function PostService( $http, $q, logger, $state ) {
+	function PostService( $http, $q, logger, $state, API_URL ) {
 		var service = {
 			getPosts  : getPosts
 		};
@@ -10,7 +10,7 @@
 		return service;
 
 		function getPosts() {
-			return $http.get( '/api/posts' )
+			return $http.get( API_URL + '/posts' )
 			.then( function( response ) {
 				return response.data;
 			})

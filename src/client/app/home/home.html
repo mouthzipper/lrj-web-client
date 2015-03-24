@@ -3,10 +3,16 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="post in home.posts" >
 				<div class="thumbnail">
-					<img src="http://placehold.it/500x300" alt="">
+					<div class="poster">
+						<span class="avatar">
+							<img src="http://placehold.it/100x100" class="avatar img-circle" width="30">
+						</span>
+						<span class="name"><a href="">{{post.author}}</a></span>
+					</div>
+					<img src="http://placehold.it/500x300" class="image" alt="">
 					<div class="caption">
 						<h4>{{ post.name }}</h4>
-						<p>{{post.details}}</p>
+						<p>{{post.description}}</p>
 						<p><i class="fa fa-thumbs-up"></i> &nbsp; <i class="fa fa-thumbs-down"></i> </p>
 					</div>
 				</div>
