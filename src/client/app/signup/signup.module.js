@@ -1,7 +1,5 @@
 ( function () {
 	'use strict';
 
-	angular.module( 'app.signup', [
-		'app.core'
-	]);
+	angular.module( 'app.signup', [] );
 })();

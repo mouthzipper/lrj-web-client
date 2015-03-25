@@ -2,24 +2,40 @@
 	'use strict';
 
 	/* @ngInject */
-	function LoginController( $q, logger, $auth, $window, $rootScope ) {
+	function LoginController( $q, logger, $auth, $window, $rootScope, $alert ) {
 		var self    = this;
 		self.user   = {};
 		self.title  = 'Login';
 		self.login  = login;
+		self.authenticate = authenticate;
+
+		logger.info( 'Activated' );
 
 		function login() {
-			$auth.login({ username: self.user.username, password: self.user.password })
+			$auth.login({ email: self.user.email, password: self.user.password })
 				.then( function( response ) {
 				$window.localStorage.currentUser = JSON.stringify( response.data.user );
 				$rootScope.currentUser = JSON.parse( $window.localStorage.currentUser );
 			})
-			.catch(function(response) {
+			.catch(function( response ) {
 				self.errorMessage = {};
-				logger.error( response.data.message );
+				self.loginForm = {};
+	          	angular.forEach(response.data.message, function (message, field ) {
+	            	self.loginForm[field].$setValidity( 'server', false);
+	            	self.errorMessage[field] = response.data.message[field];
+	          });
 			});
 		}
-		logger.info( 'Activated' );
+
+		function authenticate( provider ) {
+			$auth.authenticate(provider)
+				.then(function( response ) {
+					logger.success( 'You have successfully logged in' );
+				})
+				.catch( function(response ) {
+					logger.error( 'Failed')
+			});
+		}
 	}
 
 

@@ -4,6 +4,7 @@
 	angular.module('app', [
 		'app.core',
 		'app.data',
+		'app.directive',
 		'app.layout',
 		'app.signup',
 		'app.login',

@@ -2,7 +2,7 @@
 	'use strict';
 
 	/* @ngInject */
-	function LayoutController( $rootScope, $timeout, config, logger, $window, $auth ) {
+	function LayoutController( $rootScope, $timeout, config, logger, $window, $auth, $alert ) {
 		var self = this;
 
 		activate();
@@ -16,9 +16,12 @@
 			logger.success( config.appTitle + ' loaded!', null );
 		}
 		function logout () {
-			$auth.logout();
+			$auth.logout()
+				.then(function() {
+					logger.success( 'Succesfully logout.' );
+				} );
 			delete $window.localStorage.currentUser;
-		};
+		}
 	}
 
 	angular
