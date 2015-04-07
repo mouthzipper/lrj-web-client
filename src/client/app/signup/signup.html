@@ -3,30 +3,23 @@
 		<div class="panel-body">
 			<h4 class="text-center"><i class="ion-person-add"></i> Sign up</h4>
 			<form method="post" ng-submit="signup.signup()" name="signupForm">
-				<div class="form-group has-feedback" ng-class="{ 'has-error' : signup.signupForm.email.$invalid && signup.signupForm.email.$dirty }">
+				<div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
 					<input class="form-control input-lg" type="email" id="email" name="email" ng-model="signup.user.email" placeholder="Email" required autofocus>
 					<span class="ion-at form-control-feedback"></span>
 				</div>
-				<div class="form-group has-feedback" ng-class="{ 'has-error' : signup.signupForm.username.$dirty }">
-					<input class="form-control input-lg" type="username" id="username" name="username" ng-model="signup.user.username" placeholder="Username" required autofocus>
-					<span class="ion-at form-control-feedback"></span>
-				</div>
-				<div class="form-group has-feedback" ng-class="{ 'has-error' :singup.signupForm.firstname.$dirty }">
+				<div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.firstname.$pristine }">
 					<input class="form-control input-lg" type="firstname" id="firstname" name="firstname" ng-model="signup.user.firstname" placeholder="Firstname" required autofocus>
-					<span class="ion-at form-control-feedback"></span>
 				</div>
-				<div class="form-group has-feedback" ng-class="{ 'has-error' :signup.signupForm.lastname.$dirty }">
+				<div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.lastname.$pristine }">
 					<input class="form-control input-lg" type="lastname" id="lastname" name="lastname" ng-model="signup.user.lastname" placeholder="Lastname" required autofocus>
-					<span class="ion-at form-control-feedback"></span>
 				</div>
-				<div class="form-group has-feedback" ng-class="{ 'has-error' : signup.signupForm.password.$dirty }">
+				<div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.password.$pristine }">
 					<input class="form-control input-lg" type="password" name="password" ng-model="signup.user.password" placeholder="Password" required>
-					<span class="ion-key form-control-feedback"></span>
 				</div>
 
 				<p class="text-center text-muted"><small>By clicking on Sign up, you agree to <a href="#">terms & conditions</a> and <a href="#">privacy policy</a></small></p>
 
-				<button type="submit" class="btn btn-block btn-primary">Sign up</button>
+				<button type="submit" class="btn btn-block btn-primary" ng-disabled="signupForm.email.$pristine || signupForm.email.$dirty && signupForm.email.$invalid">Sign up</button>
 				<br/>
 
 				<p class="text-center text-muted"><small>Already have an account? <a ui-sref="login">Log in now</a></small></p>
