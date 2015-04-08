@@ -1,52 +1,89 @@
 <div class="container">
+    <div class="lrj_login">
+        <h3 class="lrj_authTitle">Login or <a ui-sref="signup">Sign up</a></h3>
+		<div class="row lrj_row-sm-offset-3 lrj_socialButtons">
+          <div class="col-xs-12 col-sm-2">
+            <a href="#" class="btn btn-lg btn-block lrj_btn-facebook">
+              <i class="fa fa-facebook fa-2x"></i>
+              <span class="hidden-xs"></span>
+            </a>
+          </div>
+          <div class="col-xs-12 col-sm-2">
+            <a href="#" class="btn btn-lg btn-block lrj_btn-twitter">
+              <i class="fa fa-twitter fa-2x"></i>
+              <span class="hidden-xs"></span>
+            </a>
+          </div>  
+          <div class="col-xs-12 col-sm-2">
+            <a href="#" class="btn btn-lg btn-block lrj_btn-google-plus">
+              <i class="fa fa-google-plus fa-2x"></i>
+              <span class="hidden-xs"></span>
+            </a>
+          </div>  
+    </div><br>
+    <div class="row lrj_row-sm-offset-3 lrj_socialButtons">
+          <div class="col-xs-12 col-sm-2">
+            <a href="#" class="btn btn-lg btn-block lrj_btn-linkedin">
+              <i class="fa fa-linkedin fa-2x"></i>
+              <span class="hidden-xs"></span>
+            </a>
+          </div>
+           <div class="col-xs-12 col-sm-2">
+            <a href="#" class="btn btn-lg btn-block lrj_btn-pinterest">
+              <i class="fa fa-pinterest fa-2x"></i>
+              <span class="hidden-xs"></span>
+            </a>
+          </div>
+          <div class="col-xs-12 col-sm-2">
+            <a href="#" class="btn btn-lg btn-block lrj_btn-tumblr">
+              <i class="fa fa-tumblr fa-2x"></i>
+              <span class="hidden-xs"></span>
+            </a>
+          </div> 
+    </div>
 
-	<div class="center-form panel well">
-	  <div class="panel-body">
-		<h4 class="text-center"><i class="ion-log-in"></i> Log in</h4>
-
-		<form name="loginForm" ng-submit="login.login()" novalidate>
-		  <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.email.$invalid && loginForm.email.$dirty }">
-			<input server-error class="form-control input-lg" type="email" name="email" ng-model="login.user.email" placeholder="email" required autofocus>
-			<span class="ion-at form-control-feedback"></span>
-			<div class="help-block" ng-if="login.loginForm.email.$dirty" ng-messages="login.loginForm.email.$error">
-				<div ng-message="server">{{login.errorMessage.email}}</div>
+		<div class="row lrj_row-sm-offset-3 lrj_loginOr">
+			<div class="col-xs-12 col-sm-6">
+				<hr class="lrj_hrOr">
+				<span class="lrj_spanOr">or</span>
 			</div>
-		  </div>
+		</div>
 
-		  <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.password.$invalid && loginForm.password.$dirty }">
-			<input server-error class="form-control input-lg" type="password" name="password" ng-model="login.user.password" placeholder="Password" required>
-			<span class="ion-key form-control-feedback"></span>
-			<div class="help-block" ng-if="login.loginForm.password.$dirty" ng-messages="login.loginForm.password.$error">
-			  <div ng-message="required">Please enter your password</div>
-			  <div ng-message="server">{{login.errorMessage.password}}</div>
+		<div class="row lrj_row-sm-offset-3">
+			<div class="col-xs-12 col-sm-6">	
+			   <form name="loginForm" class="lrj_loginForm" ng-submit="login.login()" novalidate>
+					<div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.email.$invalid && loginForm.email.$dirty }">
+						<input server-error class="form-control input-lg" type="email" name="email" ng-model="login.user.email" placeholder="email" required autofocus>
+						<span class="ion-at form-control-feedback"></span>
+						<div class="help-block" ng-if="login.loginForm.email.$dirty" ng-messages="login.loginForm.email.$error">
+							<div ng-message="server">{{login.errorMessage.email}}</div>
+						</div>
+					</div>
+
+					<div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.password.$invalid && loginForm.password.$dirty }">
+						<input server-error class="form-control input-lg" type="password" name="password" ng-model="login.user.password" placeholder="Password" required>
+						<span class="ion-key form-control-feedback"></span>
+						<div class="help-block" ng-if="login.loginForm.password.$dirty" ng-messages="login.loginForm.password.$error">
+						  <div ng-message="required">Please enter your password</div>
+						  <div ng-message="server">{{login.errorMessage.password}}</div>
+						</div>
+			  		</div>
+
+		  			<button type="submit" class="btn btn-block btn-success" ng-disabled="loginForm.$invalid">Log in</button>
+		  		</form>
 			</div>
-		  </div>
-
-		  <button type="submit" class="btn btn-block btn-success" ng-disabled="loginForm.$invalid">Log in</button>
-
-		  <br/>
-
-		  <p class="text-center text-muted">
-			<small>Don't have an account yet? <a ui-sref="signup">Sign up</a></small>
-		  </p>
-
-		  <div class="signup-or-separator">
-			<h6 class="text">or</h6>
-			<hr>
-		  </div>
-		</form>
-		<button class="btn btn-block btn-facebook" ng-click="login.authenticate('facebook')">
-		  <i class="ion-social-facebook"></i> Sign in with Facebook
-		</button>
-		<button class="btn btn-block btn-google-plus" ng-click="login.authenticate('google')">
-		  <span class="ion-social-googleplus"></span>Sign in with Google
-		</button>
-		<button class="btn btn-block btn-linkedin" ng-click="login.authenticate('linkedin')">
-		  <i class="ion-social-linkedin"></i> Sign in with LinkedIn
-		</button>
-		<button class="btn btn-block btn-twitter" ng-click="login.authenticate('twitter')">
-		  <i class="ion-social-twitter"></i> Sign in with Twitter
-		</button>
-	  </div>
+    	</div>
+		<div class="row lrj_row-sm-offset-3">
+			<div class="col-xs-12 col-sm-3">
+				<label class="checkbox">
+					<input type="checkbox" value="remember-me">Remember Me
+				</label>
+			</div>
+			<div class="col-xs-12 col-sm-3">
+				<p class="lrj_forgotPwd">
+					<a href="#">Forgot password?</a>
+				</p>
+			</div>
+		</div>	    	
 	</div>
 </div>
