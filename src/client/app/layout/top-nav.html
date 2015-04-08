@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav navbar-right">
             <li ng-if="!layout.isAuthenticated()"><a ui-sref="login">Log in</a></li>
-            <li ng-if="!layout.isAuthenticated()"><button type="button" class="btn btn-success navbar-btn btn-circle"><a ui-sref="signup">Sign up</a></button></li>
+            <li ng-if="!layout.isAuthenticated()"><button type="button" class="btn btn-success navbar-btn btn-circle" ui-sref="signup" >Sign up</button></li>
             <li ng-if="layout.isAuthenticated() && currentUser.username">
 				<a href="#">
 				<img class="media-object img-rounded" ng-src="../../images/gulp-tiny.png" height="25" width="50">
