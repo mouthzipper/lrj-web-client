@@ -1,18 +1,29 @@
-<div class="navbar navbar-default navbar-static-top">
-	<div class="container">
-		<ul class="nav navbar-nav center">
-			<a ui-sref="home" class="navbar-brand"><i class=""></i> #lrj</a>
-		</ul>
-		<ul class="nav navbar-nav pull-right">
-			<li ng-if="!layout.isAuthenticated()"><a ui-sref="signup">Sign up</a></li>
-			<li ng-if="!layout.isAuthenticated()"><a ui-sref="login">Log in</a></li>
-			<li ng-if="layout.isAuthenticated() && currentUser.username">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand text-uppercase" ui-sref="home">lahirajud  <span class="label label-success text-capitalize">.com</span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav navbar-right">
+            <li ng-if="!layout.isAuthenticated()"><a ui-sref="login">Log in</a></li>
+            <li ng-if="!layout.isAuthenticated()"><button type="button" class="btn btn-success navbar-btn btn-circle"><a ui-sref="signup">Sign up</a></button></li>
+            <li ng-if="layout.isAuthenticated() && currentUser.username">
 				<a href="#">
 				<img class="media-object img-rounded" ng-src="../../images/gulp-tiny.png" height="25" width="50">
 				@{{currentUser.username}}
 				</a>
 			</li>
 			<li ng-if="layout.isAuthenticated()"><a href="#" ng-click="layout.logout()"><i class="fa fa-power-off"></i></a></li>
-		</ul>
-	</div>
-</div>
+        </ul>
+    </div>
+  </div>
+</nav>

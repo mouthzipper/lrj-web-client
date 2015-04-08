@@ -1,8 +1,5 @@
-<div ng-controller="LayoutController as layout">
-	<header class="clearfix">
-		<div ng-include="'app/layout/top-nav.html'"></div>
-	</header>
-	<section id="content" class="container">
-		<div ui-view></div>
-	</section>
+<div class="wrapper" ng-controller="LayoutController as layout">
+	<div ng-include="'app/layout/top-nav.html'"></div>
+	<div ui-view></div>
+   	<div ng-include="'app/layout/footer.html'"></div>
 </div>
